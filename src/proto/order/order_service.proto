@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package order.v1;
+
+service OrderService {
+  rpc Capture(CaptureRequest) returns (CaptureResponse);
+}
+
+message Order {
+  uint64 order_id = 1;
+  string order_no = 2;
+  string order_type = 3;
+  int64 order_time = 4;
+  string category = 5;
+  int32 order_status = 6;
+}
+
+message CaptureRequest {
+  string order_no = 1;
+  string order_type = 2;
+  string category = 3;
+}
+
+message CaptureResponse {
+  Order order = 1;
+}
